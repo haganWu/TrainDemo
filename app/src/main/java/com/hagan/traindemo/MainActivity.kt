@@ -1,9 +1,7 @@
 package com.hagan.traindemo
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -56,6 +54,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * 检查权限
+     */
     private fun checkPermission(permissions: Array<String>): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             permissions.forEach {
@@ -66,7 +67,9 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
-
+    /**
+     * 请求权限
+     */
     private fun requestPermission(permission: Array<String>, granted: () -> Unit) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             AndPermission.with(this).runtime().permission(permission)
@@ -76,7 +79,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadContact() {
-        L.e("MainActivity -> loadContact 11")
         var tempContactList: ArrayList<ContactModel> = ArrayList()
         val resolver = contentResolver
         val cursor = resolver.query(
