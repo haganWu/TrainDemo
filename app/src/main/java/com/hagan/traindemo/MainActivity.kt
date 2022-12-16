@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         // 初始化展示列表
         initRecyclerView()
         // 按钮点击获取手机联系人
-        btGetContacts.setOnClickListener {
+        bt_get_contacts.setOnClickListener {
             val permissions = arrayOf(
                 Manifest.permission.CALL_PHONE,
                 Manifest.permission.READ_CONTACTS,
