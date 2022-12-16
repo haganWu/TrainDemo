@@ -16,7 +16,8 @@ class CommonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     companion object {
         //获取holder对象
         fun getViewHolder(parent: ViewGroup, layoutId: Int): CommonViewHolder {
-            val itemView: View = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
+            val itemView: View =
+                LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
             return CommonViewHolder(itemView)
         }
     }
@@ -29,6 +30,7 @@ class CommonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
         return view!!
     }
+
     fun setText(viewId: Int, text: String) {
         (getView(viewId) as TextView).text = text
     }

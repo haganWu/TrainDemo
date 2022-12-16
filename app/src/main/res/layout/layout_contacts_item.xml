@@ -14,7 +14,8 @@
         android:paddingHorizontal="12px"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/tv_number"
         android:text="号码"
@@ -23,6 +24,6 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
