@@ -3,33 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_gravity="center"
     android:paddingHorizontal="16dp"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/ll_container"
+    <Button
+        android:id="@+id/bt_to_native"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/bt_get_contacts"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="12dp"
-            android:background="@color/purple_200"
-            android:text="获取联系人"
-            android:textColor="@android:color/white" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/ll_container"
-        android:id="@+id/mRecyclerView"
+        android:layout_height="44dp"
+        android:layout_marginVertical="18dp"
+        android:background="@drawable/common_btn_bg"
+        android:text="Native获取联系人"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/bt_to_web"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="44dp"
+        android:layout_marginVertical="18dp"
+        android:background="@drawable/common_btn_bg"
+        android:text="Web获取联系人"
+        android:layout_below="@id/bt_to_native"
+        android:layout_marginTop="30dp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
