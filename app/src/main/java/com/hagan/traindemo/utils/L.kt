@@ -6,7 +6,7 @@ import com.hagan.traindemo.BuildConfig
 
 object L {
 
-    private const val TAG: String = "hagan"
+    private const val TAG: String = "trainDemo"
 
     fun d(text: String?) {
         if (BuildConfig.DEBUG) {

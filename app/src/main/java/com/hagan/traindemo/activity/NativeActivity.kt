@@ -13,8 +13,8 @@ import com.hagan.lib_base.base.adapter.CommonAdapter
 import com.hagan.lib_base.base.adapter.CommonViewHolder
 import com.hagan.traindemo.R
 import com.hagan.traindemo.model.ContactModel
+import com.hagan.traindemo.utils.ContactsPhoneUtils
 import com.hagan.traindemo.utils.L
-import com.hagan.traindemo.utils.NumberUtils
 import com.yanzhenjie.permission.Action
 import com.yanzhenjie.permission.AndPermission
 import kotlinx.android.synthetic.main.activity_native.*
@@ -41,6 +41,9 @@ class NativeActivity : AppCompatActivity() {
         // 初始化展示列表
         initRecyclerView()
         titleTextView.text = "Native获取联系人"
+        btnBack.setOnClickListener {
+            finish()
+        }
         // 按钮点击获取手机联系人
         bt_get_contacts.setOnClickListener {
             val permissions = arrayOf(
@@ -82,34 +85,8 @@ class NativeActivity : AppCompatActivity() {
     }
 
     private fun loadContact() {
-        var tempContactList: ArrayList<ContactModel> = ArrayList()
-        val resolver = contentResolver
-        val cursor = resolver.query(
-            contactUri,
-            arrayOf(contactName, contactNumber),
-            null,
-            null,
-            null
-        )
-        cursor?.let {
-            while (it.moveToNext()) {
-
-                val data = ContactModel(
-                    it.getString(it.getColumnIndex(contactName)), NumberUtils.dealWithPhoneNumber(
-                        it.getString(
-                            it.getColumnIndex(
-                                contactNumber
-                            )
-                        )
-                    )
-                )
-                tempContactList.add(data)
-            }
-        }
-        L.e("MainActivity -> loadContact contactList:${tempContactList}")
-        cursor.close()
         mContactList.clear()
-        mContactList.addAll(tempContactList)
+        mContactList.addAll(ContactsPhoneUtils.getContactsList(this))
         adapter.notifyDataSetChanged()
     }
 
@@ -124,11 +101,8 @@ class NativeActivity : AppCompatActivity() {
                     type: Int,
                     position: Int
                 ) {
-                    viewHolder.getView(R.id.ll_item).setOnClickListener {
-                        L.e("拨打电话:${mode.contactNumber}")
-                        var intent = Intent(Intent.ACTION_CALL)
-                        intent.data = Uri.parse("tel:${mode.contactNumber}")
-                        startActivity(intent)
+                    viewHolder.getView(R.id.tv_call).setOnClickListener {
+                        ContactsPhoneUtils.callTelephone(this@NativeActivity, mode.contactNumber)
                     }
                     viewHolder.setText(R.id.tv_name, mode.contactName)
                     viewHolder.setText(R.id.tv_number, mode.contactNumber)

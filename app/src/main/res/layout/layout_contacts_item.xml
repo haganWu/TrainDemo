@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="12dp"
-    android:id="@+id/ll_item"
-    android:layout_height="wrap_content">
+    android:padding="12dp">
 
     <TextView
         android:id="@+id/tv_name"
-        android:text="姓名"
-        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:paddingHorizontal="12px"
+        android:text="姓名"
         android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_number"
-        android:text="号码"
-        android:textSize="16sp"
-        android:textColor="@color/black"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:layout_height="wrap_content" />
+        android:text="号码"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_btn_bg"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="18px"
+        android:text="拨打"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
 
 </LinearLayout>
